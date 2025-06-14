@@ -4,7 +4,7 @@ from collections import deque
 import matplotlib.pyplot as plt
 
 class MM1Queue:
-    def __init__(self, arrival_rate, service_rate, sim_time=10000):
+    def __init__(self, arrival_rate, service_rate, sim_time=10_000):
         self.lambda_rate = arrival_rate / 60
         self.mu_rate = service_rate / 60
         self.sim_time = sim_time
