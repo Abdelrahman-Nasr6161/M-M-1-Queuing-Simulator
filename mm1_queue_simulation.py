@@ -128,7 +128,7 @@ scenarios = [
     {"name": "Original (ρ = 0.33)", "lambda": 4, "mu": 12},
     {"name": "Scenario 1 (ρ = 0.5)", "lambda": 6, "mu": 12},
     {"name": "Scenario 2 (ρ = 0.9)", "lambda": 10.8, "mu": 12},
-    {"name": "Scenario 2 (ρ = 0.1)", "lambda": 10, "mu": 100}
+    {"name": "Scenario 3 (ρ = 0.1)", "lambda": 10, "mu": 100}
 ]
 theoretical = []
 practical = []
