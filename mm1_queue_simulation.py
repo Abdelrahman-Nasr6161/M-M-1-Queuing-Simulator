@@ -123,8 +123,8 @@ class MM1Queue:
             'avg_customers_queue': avg_in_queue,
             'state_probabilities': probs,
             'customer_log': self.customer_log,
-            'server_busy_time_percentage' : self.total_busy_time / self.total_system_time,
-            'server_free_time_percentage' : 1 - self.total_busy_time / self.total_system_time
+            'server_busy_time_percentage' : self.total_busy_time / self.sim_time,
+            'server_free_time_percentage' : 1 - self.total_busy_time / self.sim_time
         }
 
 def run_simulation(arrival_rate, service_rate):
@@ -168,16 +168,16 @@ for scenario in scenarios:
               f"Departure: {customer['departure_time']:.2f}, "
               f"Queue: {customer['queue_time']:.2f}")
     theoretical.append(scenario['lambda'] / scenario['mu'])
-    practical.append(results['server_free_time_percentage'])
+    practical.append(results['server_busy_time_percentage'])
     # Plot as a line graph instead of bar chart
 plt.figure(figsize=(10, 6))
 labels = ["Original", "Scenario 1", "Scenario 2" , "Scenario 3"]
 x = np.arange(len(labels))
-plt.plot(x, [r for r in theoretical], marker='o', label='Theoretical (1-ρ)')
-plt.plot(x, practical, marker='s', label='Practical (Server Free %)')
+plt.plot(x, [r for r in theoretical], marker='o', label='Theoretical (ρ)')
+plt.plot(x, practical, marker='s', label='Practical (Server Busy %)')
 plt.xticks(x, labels)
-plt.ylabel('Proportion Server Free')
-plt.title('Theoretical vs Practical Server Free Proportion')
+plt.ylabel('Proportion Server Busy')
+plt.title('Theoretical vs Practical Server Busy Proportion')
 plt.legend()
 plt.tight_layout()
 plt.show()
@@ -186,12 +186,12 @@ labels = ["Original", "Scenario 1", "Scenario 2" , "Scenario 3"]
 x = np.arange(len(labels))
 width = 0.35
 
-plt.bar(x - width/2, theoretical, width, label='Theoretical (1-ρ)')
-plt.bar(x + width/2, practical, width, label='Practical (Server Free %)')
+plt.bar(x - width/2, theoretical, width, label='Theoretical (ρ)')
+plt.bar(x + width/2, practical, width, label='Practical (Server Busy %)')
 
 plt.xticks(x, labels)
-plt.ylabel('Proportion Server Free')
-plt.title('Theoretical vs Practical Server Free Proportion')
+plt.ylabel('Proportion Server Busy')
+plt.title('Theoretical vs Practical Server Busy Proportion')
 plt.legend()
 plt.tight_layout()
 plt.show()
